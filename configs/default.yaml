@@ -1,0 +1,11 @@
+data_flag: bloodmnist
+img_size: 224
+batch_size: 64
+epochs: 10
+lr: 0.001
+fine_tune: true
+fine_tune_layers: 30
+mixed_precision: true     # เปิด/ปิด mixed precision ได้
+seed: 42
+out_dir: results
+model_name: bloodmnist_mnv2.h5

@@ -1,27 +1,20 @@
-[build-system]
-requires = ["setuptools>=68", "wheel"]
-build-backend = "setuptools.build_meta"
-
 [project]
 name = "cv-starter"
 version = "0.1.0"
-description = "Computer Vision starter template with clean structure, tests, and CI."
 requires-python = ">=3.10"
-# เบาๆ สำหรับ CI
-dependencies = ["numpy", "pandas", "scikit-learn"]
-
-[project.optional-dependencies]
-cv = [
-  "tensorflow",
-  "keras",
-  "opencv-python"
+dependencies = [
+  "tensorflow==2.10.1",
+  "medmnist==2.2.2",
+  "numpy==1.23.5",
+  "scikit-learn==1.3.2",
+  "matplotlib==3.7.3",
+  "pyyaml==6.0.2",
+  "pytest==7.4.4",
 ]
+
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
 
 [tool.setuptools.packages.find]
 where = ["src"]
-
-[tool.black]
-line-length = 100
-
-[tool.ruff]
-line-length = 100
