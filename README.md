@@ -108,7 +108,28 @@ cv-starter/
 ![Confidence Histogram](results/plots/confidence_hist.png)  
 
 ---
+## สรุปผลการทดลอง
 
+การทดลองจำแนกประเภทเซลล์เลือดจากชุดข้อมูล **BloodMNIST** ด้วยโมเดล **MobileNetV2** แบบ Transfer Learning และ Fine-tuning ให้ผลลัพธ์ที่มีประสิทธิภาพสูงบนชุดทดสอบ
+
+- **ความแม่นยำ (Test Accuracy):** **93.74%**
+- **ค่า Macro F1-score:** **0.931**
+- **ค่า Weighted F1-score:** **0.938**
+- **ขนาดโมเดล:** ประมาณ 14 MB (ไฟล์ checkpoint ที่ดีที่สุด)
+- **กลยุทธ์การฝึก:** 2 ขั้นตอน (ฝึกเฉพาะหัวโมเดล → Fine-tune 60 เลเยอร์สุดท้ายของ backbone)
+- **การทำ Augmentation:** พลิกรูปแบบสุ่ม, ปรับความสว่าง, ความคอนทราสต์, และความอิ่มสี
+- **การใช้ Class Weights:** เพื่อปรับสมดุลข้อมูลที่ไม่สมดุลระหว่างคลาส
+
+### ข้อสังเกตสำคัญ:
+- ส่วนใหญ่แต่ละคลาสได้ **F1-score > 0.93** แสดงถึงความสามารถที่สมดุลในการจำแนก
+- คลาส **3** ได้ F1-score ต่ำสุด (0.866) เนื่องจาก recall ต่ำกว่า (0.893) อาจพัฒนาได้ด้วยการทำ augmentation เฉพาะคลาสหรือเพิ่มรอบการฝึก
+- คลาส **1** และ **7** มีผลลัพธ์เกือบสมบูรณ์แบบ (F1 ~ 0.98–0.99)
+- โมเดลสามารถ generalize ได้ดี ไม่มี overfitting รุนแรง — กราฟ training และ validation ใกล้กันตลอด
+
+### แนวทางพัฒนาต่อ:
+- ทดลอง MobileNetV2 ขนาดใหญ่ขึ้น (`alpha=1.4`) หรือ backbone อื่น เช่น EfficientNet-B0/B3 เพื่อเพิ่มความแม่นยำ
+- ใช้เทคนิคอธิบายการตัดสินใจของโมเดล เช่น Grad-CAM เพื่อดูบริเวณที่โมเดลให้ความสำคัญ
+- แปลงโมเดลเป็น TFLite เพื่อใช้งานบนอุปกรณ์มือถือหรือ edge device
 ## How to Run
 
 ```bash
@@ -117,3 +138,6 @@ python -m cv_starter.train --config configs/default.yaml
 
 # Evaluate
 python -m cv_starter.eval --config configs/default.yaml --model results/models/best_mnv2.h5
+
+![CI](https://github.com/manadsawi2560/ml-starter/actions/workflows/ci.yml/badge.svg)
+![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)
