@@ -138,6 +138,6 @@ python -m cv_starter.train --config configs/default.yaml
 
 # Evaluate
 python -m cv_starter.eval --config configs/default.yaml --model results/models/best_mnv2.h5
-
+```
 ![CI](https://github.com/manadsawi2560/ml-starter/actions/workflows/ci.yml/badge.svg)
 ![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)
