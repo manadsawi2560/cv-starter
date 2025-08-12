@@ -9,6 +9,8 @@ import yaml
 from cv_starter.data import load_dataset, make_tfds
 from cv_starter.model import build_mobilenetv2
 
+# fix import
+
 
 def set_seed(seed=42):
     random.seed(seed)
