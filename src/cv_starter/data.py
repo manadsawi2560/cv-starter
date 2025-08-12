@@ -15,9 +15,7 @@ def make_tfds(ds, img_size, n_classes, batch, aug=False, shuffle=2048):
     # รับ img_size ผ่าน default args -> ปิดช่องว่างเรื่อง closure
     def preprocess(x, y, _img_size=img_size):
         x = tf.image.resize(x, (_img_size, _img_size), method="bilinear")
-        x = tf.cast(
-            x, tf.float32
-        )  # ทาง A: ไม่หาร 255 (ให้โมเดลทำ preprocess_input เอง)
+        x = tf.cast(x, tf.float32)  # ทาง A: ไม่หาร 255 (ให้โมเดลทำ preprocess_input เอง)
         # กำหนด static shape ให้ชัด (ช่วยให้ Keras ตรวจถูก)
         x.set_shape([_img_size, _img_size, 3])
         y = tf.cast(tf.squeeze(y, axis=-1), tf.int32)
