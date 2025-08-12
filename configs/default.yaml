@@ -1,10 +1,10 @@
 data_flag: bloodmnist
 img_size: 224
 batch_size: 64
-epochs: 10
+epochs: 25
 lr: 0.001
 fine_tune: true
-fine_tune_layers: 30
+fine_tune_layers: 60
 mixed_precision: true     # เปิด/ปิด mixed precision ได้
 seed: 42
 out_dir: results
