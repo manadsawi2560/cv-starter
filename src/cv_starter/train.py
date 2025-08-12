@@ -1,9 +1,11 @@
-import os
-import yaml
 import json
+import os
 import random
+
 import numpy as np
 import tensorflow as tf
+import yaml
+
 from cv_starter.data import load_dataset, make_tfds
 from cv_starter.model import build_mobilenetv2
 

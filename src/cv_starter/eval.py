@@ -1,14 +1,16 @@
-import os
-import yaml
 import json
+import os
+
+import matplotlib.pyplot as plt
 import numpy as np
 import tensorflow as tf
-import matplotlib.pyplot as plt
+import yaml
 from sklearn.metrics import (
+    ConfusionMatrixDisplay,
     classification_report,
     confusion_matrix,
-    ConfusionMatrixDisplay,
 )
+
 from cv_starter.data import load_dataset, make_tfds
 
 
